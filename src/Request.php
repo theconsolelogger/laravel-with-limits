@@ -14,7 +14,7 @@ use LaraveWithLimits\RateLimit;
  *
  * @author Jonathan Staniforth
  * @copyright 2017 Jonathan Staniforth
- * @version 1.0.0
+ * @version 1.0.2
  */
 class Request
 {
@@ -55,11 +55,7 @@ class Request
     /**
      * Sets the path of the request.
      *
-     * Sets the path to the resource,
-     * not including the base URI.
-     *
      * @param string $path The path.
-     *
      * @return self Returns this instance.
      */
     public function path($path)
@@ -71,9 +67,6 @@ class Request
 
     /**
      * Sends the request.
-     *
-     * Sends the request, along with its data, to the URI.
-     * Also, checks any rate limits that have been set.
      *
      * @return \GuzzleHttp\Psr7\Response The response from the request.
      */
@@ -103,11 +96,7 @@ class Request
     /**
      * Sets the base URI.
      *
-     * Sets the base URI of the resource
-     * for the request.
-     *
      * @param string $base_uri The base URI.
-     *
      * @return self Returns this instance.
      */
     public function withBaseUri($base_uri)
@@ -120,11 +109,7 @@ class Request
     /**
      * Sets the headers.
      *
-     * Sets the headers to be included
-     * in the request.
-     *
      * @param string[] $headers An associative array, key is name of header and value is the value of the header.
-     *
      * @return self Returns this instance.
      */
     public function withHeaders(array $headers)
@@ -137,11 +122,7 @@ class Request
     /**
      * Sets a rate limit.
      *
-     * Sets the headers to be included
-     * in the request.
-     *
      * @param callback $callback A closure to call on the rate limit.
-     *
      * @return self Returns this instance.
      */
     public function withLimit(Closure $callback)
@@ -156,11 +137,7 @@ class Request
     /**
      * Sets the parameters.
      *
-     * Sets the parameters to be included
-     * in the request.
-     *
      * @param string[] $parameters An associative array, key is name of parameter and value is the value of the parameter.
-     *
      * @return self Returns this instance.
      */
     public function withParameters(array $parameters)

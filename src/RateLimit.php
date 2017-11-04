@@ -7,11 +7,9 @@ use Cache;
 /**
  * A rate limit.
  *
- * A rate limit associated with an endpoint.
- *
  * @author Jonathan Staniforth
  * @copyright 2017 Jonathan Staniforth
- * @version 1.0.0
+ * @version 1.0.2
  */
 class RateLimit
 {
@@ -25,10 +23,7 @@ class RateLimit
     /**
      * Sets the api.
      *
-     * Sets the name of the system with the endpoint.
-     *
      * @param string $api Name of the system.
-     *
      * @return self Returns this instance.
      */
     public function api($api)
@@ -41,10 +36,7 @@ class RateLimit
     /**
      * Checks the rate limit.
      *
-     * Checks if the rate limit for the endpoint has been reached.
-     *
      * @param \GuzzleHttp\Psr7\Response $response GuzzleHttp response object.
-     *
      * @return boolean True if rate limit has been reached.
      */
     public function check_limit($response)
@@ -70,10 +62,7 @@ class RateLimit
     /**
      * Sets the endpoint.
      *
-     * Sets the endpoint to the resource.
-     *
      * @param string $endpoint Name of the endpoint.
-     *
      * @return self Returns this instance.
      */
     public function endpoint($endpoint)
@@ -86,10 +75,7 @@ class RateLimit
     /**
      * Sets the header.
      *
-     * Sets the header that contains the rate limit of the endpoint in the response.
-     *
      * @param string $endpoint Name of the header.
-     *
      * @return self Returns this instance.
      */
     public function header($header)
@@ -101,8 +87,6 @@ class RateLimit
 
     /**
      * Checks endpoint limit status.
-     *
-     * Checks if the endpoint has exceeded its rate limit.
      *
      * @return boolean True if the rate limit has been exceeded.
      */
