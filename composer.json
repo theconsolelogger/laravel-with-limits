@@ -1,12 +1,12 @@
 {
     "name": "jonathanstaniforth/laravel-with-limits",
-    "description": "A Laravel HTTP package, using GuzzleHttp, with rate limit tracking.",
+    "description": "Laravel with limits is a Laravel package that handles API rate limits, down to the method level. The package will read rate limit headers and keep track of requests to prevent exceeding rate limits. GuzzleHttp is used to send requests and receive responses.",
     "keywords": ["Laravel", "GuzzleHttp", "HTTP", "rate limit"],
     "homepage": "https://github.com/jonathanstaniforth/laravel-with-limits",
     "license": "MIT",
     "require": {
         "guzzlehttp/guzzle": "^6.3",
-        "php": "^7.1"
+        "php": "^7.1",
     },
     "authors": [
         {
@@ -16,8 +16,8 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": {
-            "LaravelWithLimits": "src/"
+        "psr-4": {
+            "jonathanstaniforth\\LaravelWithLimits\\": "src"
         }
     }
 }
