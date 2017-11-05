@@ -4,7 +4,7 @@ namespace LaravelWithLimits;
 
 use Closure;
 use GuzzleHttp\Client;
-use LaraveWithLimits\RateLimit;
+use LaravelWithLimits\RateLimit;
 
 /**
  * A HTTP request.
