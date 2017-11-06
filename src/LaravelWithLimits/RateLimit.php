@@ -48,7 +48,6 @@ class RateLimit
         $number_of_requests = $response->getHeader($header.'-Count');
         $number_of_requests = $number_of_requests[0];
 
-
         if ($number_of_requests >= $limit)
         {
             Cache::put($this->api.$this->endpoint, true, $time);

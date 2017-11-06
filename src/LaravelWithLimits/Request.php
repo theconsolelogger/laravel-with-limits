@@ -21,31 +21,28 @@ class Request
     /**
      * @var string $base_uri The base URI of the request.
      * @var \GuzzleHttp\Client $client The GuzzleHttp client to use for the request.
-     * @var string $method The method to perform on the resource.
      * @var string $path The path to the resource.
      * @var string[] $headers An associative array containing headers for the request.
      * @var string[] $query An associative array containing the parameters for the request.
      * @var \LaravelWithLimits\RateLimit[] $rate_limit A list of rate limits.
+     * @var string $method The method to perform on the resource, default: GET.
      */
-    private $base_uri, $client, $method, $path;
+    private $base_uri, $client, $path;
     private $headers, $query, $rate_limits = [];
+    private $method = 'GET';
 
     public function __construct()
     {
-        $this->client = new Client;
+        $this->client = new Client();
     }
 
     /**
      * Sets the method of the request.
      *
-     * Sets the method to be performed on the resource.
-     * Includes: GET, POST, PUT, PATCH, DELETE.
-     *
      * @param string $method The method, e.g. GET.
-     *
      * @return self Returns this instance.
      */
-    public function method($method)
+    public function method(string $method)
     {
         $this->method = $method;
 
@@ -58,7 +55,7 @@ class Request
      * @param string $path The path.
      * @return self Returns this instance.
      */
-    public function path($path)
+    public function path(string $path)
     {
         $this->path = $path;
 
@@ -76,7 +73,7 @@ class Request
         {
             if ($rate_limit->exceeded())
             {
-                return false;
+                throw new Exception($rate_limit->api.':'.$rate_limit->endpoint.' rate limit exceeded.');
             }
         }
 
@@ -99,7 +96,7 @@ class Request
      * @param string $base_uri The base URI.
      * @return self Returns this instance.
      */
-    public function withBaseUri($base_uri)
+    public function withBaseUri(string $base_uri)
     {
         $this->base_uri = $base_uri;
 
@@ -127,7 +124,7 @@ class Request
      */
     public function withLimit(Closure $callback)
     {
-        $this->rate_limit[] = $rate_limit = new RateLimit;
+        $this->rate_limits[] = $rate_limit = new RateLimit;
 
         $callback($rate_limit);
 
